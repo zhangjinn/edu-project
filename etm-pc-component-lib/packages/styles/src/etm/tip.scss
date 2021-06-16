@@ -1,0 +1,124 @@
+.etmTip {
+  z-index: 6000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .5);
+
+  .tipBox {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 30px 20px 65px;
+    width: 434px;
+    min-height: 200px;
+    height: min-content;
+    max-height: 560px;
+    border-radius: 4px;
+    background-color: $white;
+
+    .header {
+
+      .iconfont {
+        font-size: 22px;
+        vertical-align: middle;
+
+        &.success {
+          @include etm-color;
+        }
+
+        &.warn {
+          color: $--color-warning;
+        }
+
+        &.error {
+          color: $--color-danger;
+        }
+      }
+
+      .title {
+        vertical-align: middle;
+        font-size: 16px;
+        margin-left: 14px;
+        color: $--color-text-primary;
+      }
+    }
+
+    .body {
+      width: 372px;
+      min-height: 80px;
+      max-height: 420px;
+      overflow-y: auto;
+      padding-left: 36px;
+      margin-top: 16px;
+      line-height: 22px;
+      font-size: 14px;
+      color: $--color-text-regular;
+    }
+
+    .footer {
+      position: absolute;
+      width: calc(100% - 40px);
+      bottom: 16px;
+      &::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+      .el-button {
+        float: right;
+        padding: 9px 15px;
+        font-size: 14px;
+        border-radius: 3px;
+
+        &.success:not(.cancel-tip) {
+          border: none;
+        }
+
+        &.warn:not(.cancel-tip) {
+          border: none;
+        }
+
+        &.error:not(.cancel-tip) {
+          border: none;
+        }
+
+        &.cancel {
+          color: $white;
+          background-color: $white;
+          color: $--color-text-secondary;
+          border-color: #E0E0E0;
+        }
+
+        &:hover {
+          /*opacity: .7;*/
+        }
+        
+        &.cancel-tip {
+          &.warn {
+            &:hover {
+              color: $--color-warning;
+              border-color: $--color-warning;
+            }
+          }
+
+          &.error {
+            &:hover {
+              color: $--color-danger;
+              border-color: $--color-danger;
+            }
+          }
+        }
+      }
+
+      .el-button+.el-button {
+        margin: 0 8px 0 0;
+      }
+    }
+  }
+}

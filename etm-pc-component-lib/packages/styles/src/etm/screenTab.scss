@@ -1,0 +1,55 @@
+@import "./themes/themeConfig";
+
+.EtmScreenTab-wrap {
+  display: flex;
+  font-size: 14px;
+  margin-bottom: 16px;
+  align-items: flex-start;
+
+  .screenTabTitle {
+    height: 32px;
+    line-height: 32px;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -4px;
+
+    li {
+      border-radius: 4px;
+      padding: 4px 8px;
+      margin: 4px;
+      cursor: pointer;
+      height: 32px;
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+
+      &:not(.not-click):hover{
+        color: $--color-primary !important;
+        background-color: rgba($--color-primary, .1) !important;
+      }
+
+    }
+
+    .is-multiple {
+      background-color: $etm-background-color;
+    }
+
+    .active {
+      color: $--color-primary !important;
+      background-color: rgba($--color-primary, .1) !important;
+    }
+
+    .not-click {
+      cursor: not-allowed !important;
+    }
+
+  }
+
+}

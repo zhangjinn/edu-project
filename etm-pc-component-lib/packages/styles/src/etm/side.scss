@@ -1,0 +1,38 @@
+.el-drawer>header>span:focus {
+  outline-color: white;
+}
+
+.el-drawer>header>button:focus {
+  outline-color: white;
+}
+
+.el-drawer>header>button:hover {
+  color: rgb(64, 158, 255);
+}
+
+.el-drawer.rtl {
+  background-color: $white;
+  width: 420px;
+
+  .el-drawer__header {
+    margin-bottom: 0;
+    padding: 0 18px 0 24px;
+    min-height: 55px;
+    border-bottom: 1px solid;
+    border-color: $etm-border-color;
+
+    &>span {
+      font-size: 16px;
+      color: $--color-text-primary;
+    }
+
+    .el-dialog__close:hover {
+      color: $--color-primary;
+    }
+  }
+
+  .el-drawer__body {
+    padding-top: 0;
+    /*margin-top: 56px;*/
+  }
+}

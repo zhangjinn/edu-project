@@ -1,0 +1,13 @@
+.EtmFontIcon-wrap {
+  cursor: pointer;
+  font-weight: bold;
+
+  &-plus {
+    color: $--color-primary;
+  }
+
+  &-minus {
+    color: $--color-danger;
+  }
+}
+

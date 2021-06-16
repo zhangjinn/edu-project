@@ -1,0 +1,27 @@
+@import "./themes/themeConfig";
+
+.EtmTableDigit-wrap {
+  .table-digit {
+    display: flex;
+    @include etm-color;
+    .col {
+      padding: 0 16px;
+      border-right: 1px solid #EEEEEE;
+      .top-digit {
+        margin-bottom: 8px;
+        line-height: 12px;
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .bottom-text {
+        line-height: 12px;
+        font-size: 12px;
+        font-weight: 400;
+        color: #999999;
+      }
+    }
+    .col:last-child {
+      border-right: none;
+    }
+  }
+}

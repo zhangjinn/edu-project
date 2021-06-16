@@ -1,0 +1,62 @@
+{
+  "name": "etm-pc-component-lib",
+  "author": "dengshen",
+  "version": "2.4.26",
+  "private": false,
+  "main": "lib/js/etm-pc-component-lib.umd.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "fix": "eslint --fix --ext .js,.vue packages/ src/",
+    "lib": "npm run test && rm -rf ./lib && vue-cli-service build --target lib --name etm-pc-component-lib --dest lib/js ./packages/index.js && echo 组件库打包完成 && auto-changelog -o ./lib/changelog.md && npm run build:css",
+    "pub": "npm run lib && npm version patch && npm publish",
+    "build:css": "node theme.js",
+    "test:unit": "vue-cli-service test:unit --watch",
+    "test": "vue-cli-service test:unit",
+    "test:report": "jest --coverage"
+  },
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "element-ui": "^2.13.0",
+    "vue": "^2.6.11",
+    "vue-router": "3.0.6"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-eslint": "~4.2.0",
+    "@vue/cli-plugin-unit-jest": "~4.5.0",
+    "@vue/cli-service": "~4.2.0",
+    "@vue/test-utils": "^1.0.3",
+    "axios": "^0.19.2",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-html": "^6.0.2",
+    "eslint-plugin-vue": "^6.1.2",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-css-wrap": "^0.1.2",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-sass": "^3.1.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.9",
+    "lrz": "^4.9.40",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "sinon": "^9.2.1",
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.4.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo 🔧️开始进行代码检测 🔧️️ && lint-staged &&  npm run test && echo 👌 代码很OK 👌"
+    }
+  },
+  "lint-staged": {
+    "packages/**/*.vue": "eslint",
+    "packages/**/*.js": "eslint"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

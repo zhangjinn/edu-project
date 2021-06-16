@@ -1,0 +1,50 @@
+.EtmStructure {
+  .structureA {
+    height: calc(100vh - 125px);
+    background-color: $white;
+    border-radius: 4px;
+    overflow: auto;
+  }
+
+  .structureB {
+    .up-part, .down-left-part, .down-right-part {
+      background-color: $white;
+      border-radius: 4px;
+    }
+    .up-part {
+      height: 86px;
+      overflow: auto;
+    }
+    .down-part {
+      display: flex;
+      height: calc(100vh - 215px);
+      margin-top: 16px;
+      .down-left-part {
+        overflow: auto;
+        width: 510px;
+      }
+      .down-right-part {
+        overflow: auto;
+        margin-left: 16px;
+        width: calc(100% - 526px);
+      }
+    }
+  }
+
+  .structureC {
+    display: flex;
+    .left-part, .right-part {
+      /*height: calc(100vh - 151px);*/
+      overflow: auto;
+      background-color: $white;
+      border-radius: 4px;
+    }
+    .left-part {
+      width: 210px;
+    }
+    .right-part {
+      width: calc(100% - 226px);
+      margin-left: 16px;
+    }
+  }
+}

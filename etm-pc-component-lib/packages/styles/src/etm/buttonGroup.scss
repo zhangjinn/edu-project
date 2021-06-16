@@ -1,0 +1,16 @@
+.etm-button-group {
+  display: inline-block;
+
+  & > .etm-button {
+    border-radius: 2px 0 0 2px;
+
+    & + .etm-button {
+      margin-left: 1px;
+      border-radius: 0 2px 2px 0;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+  }
+}

@@ -1,0 +1,102 @@
+@import "../../common/var.scss";
+
+
+$themes: (
+        etm-rainBlue:(
+                color: $rainBlue,
+                backgroundColor: $default-backgroundColor
+        ),
+        etm-pink:(
+                color: $pink,
+                backgroundColor: $default-backgroundColor
+        ),
+        etm-purple:(
+                color: $purple,
+                backgroundColor: $default-backgroundColor
+        ),
+        etm-warmOrange:(
+                color: $warmOrange,
+                backgroundColor: $default-backgroundColor
+        ),
+        etm-blackGold: (
+                color: $blackGold,
+                backgroundColor: $default-backgroundColor
+        ),
+        etm-yellow: (
+                color: $yellow,
+                backgroundColor: $default-backgroundColor
+        ),
+        etm-blue:(
+                color: $blue,
+                backgroundColor: $default-backgroundColor
+        ),
+        etm-green:(
+                color: $green,
+                backgroundColor: $default-backgroundColor
+        ),
+        etm-girlPink:(
+                color: $girlPink,
+                backgroundColor: $default-backgroundColor
+        ),
+        etm-lavenderPurple:(
+                color: $lavenderPurple,
+                backgroundColor: $default-backgroundColor
+        ),
+        etm-brown:(
+                color: $brown,
+                backgroundColor: $default-backgroundColor
+        ),
+   
+        etm-iceBlue:(
+                color: $iceBlue,
+                backgroundColor: $default-backgroundColor
+        )
+);
+
+
+/**
+ * 设置边框
+ */
+@mixin etm-bd($direction) {
+  @each $key, $value in $themes {
+    .#{$key} & {
+      border-#{$direction}: 1px solid map_get($value, 'color');
+    }
+  }
+}
+
+
+/**
+ * 设置边框颜色
+ */
+@mixin etm-bdc {
+  @each $key, $value in $themes {
+    .#{$key} & {
+      border-color: map_get($value, 'color');
+    }
+  }
+}
+
+
+/**
+ * 设置背景色
+ */
+@mixin etm-bgc {
+  @each $key, $value in $themes {
+    .#{$key} & {
+      background-color: map_get($value, 'backgroundColor');
+    }
+  }
+}
+
+/**
+ * 字体颜色
+ */
+@mixin etm-color {
+  @each $key, $value in $themes {
+    .#{$key} & {
+      color: map_get($value, 'color');
+    }
+  }
+}
+

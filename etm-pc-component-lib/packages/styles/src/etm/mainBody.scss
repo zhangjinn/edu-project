@@ -1,0 +1,8 @@
+.etm-main-body {
+  height: inherit;
+  .content {
+    //@include bgc_white();
+    /*height: calc(100vh - 143px);*/
+    margin: 16px 0;
+  }
+}

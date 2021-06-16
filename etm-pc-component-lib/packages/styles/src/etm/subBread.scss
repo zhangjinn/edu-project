@@ -1,0 +1,51 @@
+.subBread {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .subBreadCrumb {
+    &.hide {
+      visibility: hidden;
+      height: 16px;
+    }
+    color: $--color-text-regular;
+    font-size: 12px;
+    line-height: 40px;
+    .el-breadcrumb {
+      display: inline-block;
+      font-size: 12px;
+      line-height: 10px;
+      & >>> .el-breadcrumb__separator {
+        color: $--color-info;
+      }
+      a {
+        color: $--color-info;
+        &:hover {
+          color: $--color-primary;
+        }
+      }
+      span {
+        color: $--color-text-primary;
+      }
+    }
+    .el-breadcrumb__inner a {
+      font-weight: normal;
+    }
+  }
+  .mainView {
+    //@include bgc_white();
+    /** 配合应用设置栏
+        @include bgc_white();
+        height: calc(100vh - 236px);
+        &.hide {
+          height: calc(100vh - 200px);
+        }
+     */
+    /*flex: 1;*/
+    /*overflow: hidden;*/
+    /*height: calc(100vh - 100px);*/
+    padding-bottom: 16px;
+    &.hide {
+      /*height: calc(100vh - 138px);*/
+    }
+  }
+}

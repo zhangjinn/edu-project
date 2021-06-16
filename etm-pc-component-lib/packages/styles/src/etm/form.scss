@@ -1,0 +1,32 @@
+.EtmForm-wrap {
+   .el-form {
+    .el-form-item {
+      margin-bottom: 24px;
+
+      .el-form-item {
+        margin-bottom: 0;
+      }
+
+      .el-form-item__content > div {
+        width: 100%;
+      }
+    }
+
+    .is-required {
+      .el-form-item__label {
+
+        &::before {
+          display: none;
+        }
+
+        &::after {
+          content: '*';
+          color: #f5222d;
+          margin-left: 4px;
+        }
+      }
+      
+    }
+  }
+
+}

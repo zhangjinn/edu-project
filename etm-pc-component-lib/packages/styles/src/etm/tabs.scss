@@ -1,0 +1,105 @@
+.EtmTabs-wrap {
+  position: relative;
+  background-color: $white;
+  //padding: 0 24px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  //margin-bottom: 16px;
+
+  & .show {
+    .el-tabs__content {
+      padding-top: 16px;
+      transition: all .3s;
+      display: block;
+      //padding-bottom: 16px;
+    }
+
+    .el-tabs__nav-wrap {
+      margin-bottom: 1px;
+
+      &:after {
+        display: block;
+        height: 1px;
+      }
+    }
+  }
+
+  & .el-tabs.el-tabs--left {
+    .el-tabs__header.is-left {
+      margin-right: 0;
+    }
+
+    .el-tabs__item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .is-active {
+      background-color: rgba($--color-primary, 0.12);
+    }
+
+    .el-tabs__content {
+      padding-top: 0;
+      position: relative;
+      left: -1px;
+      padding-left: 16px;
+      border-left: 2px solid $etm-border-color;
+    }
+  }
+
+  & {
+    .el-tabs__content {
+      padding-bottom: 0;
+      display: none;
+    }
+
+    .el-tabs__nav-wrap {
+      &:after {
+        display: none;
+        height: 0;
+      }
+
+      .el-tabs__item {
+        height: 40px;
+        line-height: 24px;
+      }
+    }
+
+
+  }
+
+  .tool {
+    height: 40px;
+    position: absolute;
+    right: 0;
+    top: -8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    > *:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+
+
+  .expand-transition {
+    transition: all .3s ease;
+    height: 30px;
+    padding: 10px;
+    background-color: #eee;
+    overflow: hidden;
+  }
+
+  /* .expand-enter 定义进入的开始状态 */
+  /* .expand-leave 定义离开的结束状态 */
+  .expand-enter, .expand-leave {
+    height: 0;
+    padding: 0 10px;
+    opacity: 0;
+  }
+}

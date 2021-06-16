@@ -1,0 +1,29 @@
+.EtmFieldLabel-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-bottom: 16px;
+
+
+  .label {
+    &.label--type--normal {
+      white-space: nowrap;
+      color: $--color-text-regular;
+    }
+
+    &.label--type--left, &.label--type--right {
+      min-width: 126px;
+    }
+
+    &.label--type--left {
+      text-align: left;
+      color: $--color-text-secondary;
+    }
+
+    &.label--type--right {
+      text-align: right;
+      color: $--color-text-regular;
+    }
+  }
+
+}

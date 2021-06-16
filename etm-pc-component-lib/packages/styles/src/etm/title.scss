@@ -1,0 +1,61 @@
+@import "./themes/themeConfig";
+
+.EtmTitle-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 16px;
+  min-height: 40px;
+
+  .box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    &.bdb {
+      //padding-top: 16px;
+      //height: 56px;
+      padding-bottom: 16px;
+      //@include etm-bd(bottom);
+      border-bottom: 1px solid $etm-border-color;
+    }
+
+    .text {
+      width: 100%;
+      font-size: 14px;
+      color: $--color-text-primary;
+      font-weight: bold;
+
+      //&.line {
+      //  padding-left: 8px;
+      //  border-left-width: 3px;
+      //  border-left-style: solid;
+      //  border-left-color: $--color-primary;
+      //}
+    }
+
+    .tool-btn {
+      //position: absolute;
+      //right: 0;
+      //top: 0;
+      display: flex;
+      align-items: center;
+
+      .el-button {
+        margin-left: 0;
+
+        &.el-button--text {
+          padding: 0;
+        }
+      }
+
+
+      & > *:not(:last-child) {
+        margin-right: 5px;
+      }
+
+    }
+  }
+}

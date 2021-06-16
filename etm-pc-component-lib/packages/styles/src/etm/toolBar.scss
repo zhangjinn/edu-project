@@ -1,0 +1,27 @@
+.EtmToolBar-wrap {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-color: $white;
+
+  .el-input, .el-select, .el-date-editor {
+    width: 240px !important;
+  }
+
+  .label {
+    color: $--color-text-regular;
+  }
+
+  .el-form-item {
+    margin-bottom: 16px;
+    margin-right: 24px !important;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .label {
+    margin-right: 10px;
+  }
+}

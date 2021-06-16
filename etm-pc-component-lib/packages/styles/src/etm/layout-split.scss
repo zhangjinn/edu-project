@@ -1,0 +1,46 @@
+.EtmLayoutSplit-wrap {
+  width: 100%;
+  //height: 100%;
+  display: flex;
+  background-color: $etm-bgc;
+
+  .layout-left, .layout-right, .layout-header, .layout-body, .layout-default {
+    padding: 16px 16px 0 16px;
+    border-radius: $--border-radius-base;
+  }
+
+  .layout-left {
+    height: inherit;
+    min-width: 200px;
+    max-width: 50%;
+    background-color: $white;
+    overflow: auto;
+    margin-right: 16px;
+  }
+
+  .layout-right {
+    height: inherit;
+    flex: auto;
+    background-color: $white;
+    overflow: auto;
+  }
+
+  .layout-header {
+    width: inherit;
+    background-color: $white;
+    padding-bottom: 0;
+
+  }
+
+  .layout-body {
+    margin-top: 16px;
+    width: inherit;
+    background-color: $white;
+    overflow: auto;
+  }
+
+  .layout-default {
+    width: inherit;
+    background-color: $white;
+  }
+}

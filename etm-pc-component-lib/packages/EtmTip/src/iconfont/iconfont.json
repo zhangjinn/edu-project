@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "51911588",
+      "name": "警告",
+      "font_class": "jinggao",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "51911590",
+      "name": "success",
+      "font_class": "success",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "51911592",
+      "name": "X",
+      "font_class": "X",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    }
+  ]
+}

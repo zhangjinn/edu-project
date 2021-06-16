@@ -1,0 +1,53 @@
+.EtmText-wrap {
+  display: inline-block;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-right: 18px;
+  user-select: none;
+
+  & + .EtmText-wrap:last-child {
+    margin-right: 0;
+  }
+
+  @mixin when($color) {
+    color: $color;
+    &:hover, &:focus {
+      color: mix($white, $color, 20%);
+    }
+
+    &:active {
+      color: mix($--color-black, $color, 20%);
+    }
+  }
+
+  .etm-text--button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    transition: all .1s;
+    cursor: pointer;
+
+    &.etm-text--primary {
+      @include when($--color-primary);
+    }
+
+    &.etm-text--success {
+      @include when($--color-success);
+    }
+
+    &.etm-text--warn {
+      @include when($--color-warning);
+    }
+
+    &.etm-text--danger {
+      @include when($--color-danger);
+    }
+
+    &.etm-text--normal {
+      @include when($--color-text-primary);
+    }
+  }
+}
+
+
+
