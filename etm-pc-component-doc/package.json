@@ -1,0 +1,29 @@
+{
+  "name": "etm-pc-component-doc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "dependencies": {
+    "core-js": "2",
+    "element-ui": "^2.13.2",
+    "etm-pc-component-lib": "2.4.0",
+    "highlight.js": "^10.1.1",
+    "vue": "^2.6.11",
+    "vuepress": "^1.5.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-env": "^1.7.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2"
+  }
+}
