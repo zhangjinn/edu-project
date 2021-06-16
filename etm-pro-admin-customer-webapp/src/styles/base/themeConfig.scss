@@ -1,0 +1,212 @@
+$default-backgroundColor: #fff;
+$dark-backgroundColor: #222;
+$dark: rgba(109, 116, 134, 0.9);
+$sidebar-icon-color: #9ea5b6;
+
+$white: #fff;
+$black: #000;
+$yellow: #e4ac2f;
+$blackGold: #e4ac2f;
+$purple: #8457f2;
+$pink: #f56b9b;
+$brown: #ba7a5c;
+$green: #57c69a;
+$blue: #3d7bff;
+$warmOrange: #ff9670;
+$rainBlue: #0ec0c8;
+$girlPink: #fa8c8e;
+$lavenderPurple: #ca6cf5;
+
+$themes: (
+  etm-rainBlue:(
+    color: $rainBlue,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-pink:(
+    color: $pink,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-purple:(
+    color: $purple,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-warmOrange:(
+    color: $warmOrange,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-blackGold: (
+    color: $blackGold,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-blue:(
+    color: $blue,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-green:(
+    color: $green,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-girlPink:(
+    color: $girlPink,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-lavenderPurple:(
+    color: $lavenderPurple,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-brown:(
+    color: $brown,
+    backgroundColor: $default-backgroundColor
+  )
+
+);
+
+
+
+/**
+ * 设置边框颜色
+ */
+@mixin etm-bdc {
+  @each $key, $value in $themes {
+    .#{$key} & {
+      border-color: map_get($value, 'color');
+    }
+  }
+}
+
+
+/**
+ * 设置背景色
+ */
+@mixin etm-bgc {
+  @each $key, $value in $themes {
+    .#{$key} & {
+      background-color: map_get($value, 'color');
+    }
+  }
+}
+
+/**
+ * 字体颜色
+ */
+@mixin etm-color {
+  @each $key, $value in $themes {
+    .#{$key} & {
+      color: map_get($value, 'color');
+    }
+  }
+}
+
+
+/**
+ * 根据主题色设置背景透明度
+ */
+@mixin etm-bgc-rgba ($opacity: 0.12) {
+  @each $key, $value in $themes {
+    .#{$key} & {
+      background-color: rgba(map_get($value, 'color'), $opacity);
+    }
+  }
+}
+
+
+/**
+ * 设置sidebar默认字体色
+ */
+@mixin etm-sidebar-menuitem-default-color {
+  @each $key, $value in $sidebarThemes {
+    .#{$key} & {
+      color: map_get($value, 'sidebarMenuitemDefaultColor');
+    }
+  }
+}
+
+/**
+ * 设置sidebar默认左侧icon颜色
+ */
+@mixin etm-sidebar-menuitem-left-icon-default-color {
+  @each $key, $value in $sidebarThemes {
+    .#{$key} & {
+      color: map_get($value, 'sidebarMenuitemLeftIconDefaultColor');
+    }
+  }
+}
+
+/**
+ * 设置sidebar选中项字体色
+ */
+@mixin etm-sidebar-menuitem-active-color {
+  @each $key, $value in $sidebarThemes {
+    .#{$key} & {
+      color: map_get($value, 'sidebarMenuitemActiveColor');
+    }
+  }
+}
+
+/**
+ * 设置sidebar选中项Menuitem背景色
+ */
+@mixin etm-sidebar-menuitem-active-bgc {
+  @each $key, $value in $sidebarThemes {
+    .#{$key} & {
+      background-color: rgba(map_get($value, 'sidebarMenuitemActiveBgc'), 0.12);
+    }
+  }
+}
+
+/**
+ * 设置sidebar 选中项SubmenuTitle背景色
+ */
+@mixin etm-sidebar-submenuTitle-active-bgc {
+  @each $key, $value in $sidebarThemes {
+    .#{$key} & {
+      background-color: rgba(map_get($value, 'sidebarSubmenuTitleActiveBgc'), 0.12);
+    }
+  }
+}
+
+/**
+ * 设置sidebar背景色
+ */
+@mixin etm-sidebar-bgc {
+  @each $key, $value in $sidebarThemes {
+    .#{$key} & {
+      background: map_get($value, 'backgroundColor');
+    }
+  }
+}
+
+/**
+ * 设置sidebar底部背景图
+ */
+@mixin etm-sidebar-background-bottom-img {
+  @each $key, $value in $sidebarThemes {
+    .#{$key} & {
+      background-image: map_get($value, 'sidebarBackgroundBottomImg');
+      background-position: right bottom;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+/**
+ * 设置sidebar折叠时弹出框内选中项背景色
+ */
+@mixin etm-sidebar-vertical-active-bgc {
+  @each $key, $value in $sidebarThemes {
+    .#{$key} & {
+      background-color: rgba(map_get($value, 'color'), 0.12);
+    }
+  }
+}
+
+/**
+ * 设置sidebar折叠时弹出框内默认字体色
+ */
+@mixin etm-sidebar-vertical-default-color {
+  @each $key, $value in $sidebarThemes {
+    .#{$key} & {
+      color: $dark;
+    }
+  }
+}
