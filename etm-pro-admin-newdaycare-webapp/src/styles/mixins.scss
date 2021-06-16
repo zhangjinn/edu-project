@@ -1,0 +1,224 @@
+@import './base/var';
+
+
+// 设置字体颜色
+@mixin color($color:$color-text) {
+  color: $color-text;
+}
+
+// 背景
+@mixin background($background:$color-divide) {
+  background-color: $background;
+}
+
+// 边框
+@mixin border-color($color) {
+  border-color: $color;
+}
+
+@mixin bgc_divide_color {
+  background-color: $color-divide;
+
+  [data-theme='theme-default'] & {
+    background-color: $color-divide;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $color-divide;
+  }
+}
+
+@mixin c_title_color {
+  color: $color-title;
+
+  [data-theme='theme-default'] & {
+    color: $color-title;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $color-title;
+  }
+}
+
+@mixin c_secondary_color {
+  color: $color-secondary;
+
+  [data-theme='theme-default'] & {
+    color: $color-secondary;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $color-secondary;
+  }
+}
+
+@mixin c_warn_color {
+  color: $color-warn;
+
+  [data-theme='theme-default'] & {
+    color: $color-warn;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $color-warn;
+  }
+}
+
+@mixin bgc_hover_color {
+  background-color: $color-hover;
+
+  [data-theme='theme-default'] & {
+    background-color: $color-hover;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $color-hover;
+  }
+}
+
+@mixin bgc_white {
+  background-color: $white;
+
+  [data-theme='theme-default'] & {
+    background-color: $white;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $white;
+  }
+}
+
+@mixin c_error_color {
+  color: $color-error;
+
+  [data-theme='theme-default'] & {
+    color: $color-error;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $color-error;
+  }
+}
+
+
+@mixin c_white {
+  color: $white;
+
+  [data-theme='theme-default'] & {
+    color: $white;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $white;
+  }
+}
+
+@mixin c_border_color_base {
+  color: $color-border-base;
+
+  [data-theme='theme-default'] & {
+    color: $color-border-base;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $color-border-base;
+  }
+}
+
+@mixin c_control_color {
+  color: $color-control;
+
+  [data-theme='theme-default'] & {
+    color: $color-control;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $color-control;
+  }
+}
+
+@mixin c_disabled_color {
+  color: $color-disabled;
+
+  [data-theme='theme-default'] & {
+    color: $color-disabled;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $color-disabled;
+  }
+}
+
+// 设置边框颜色
+@mixin bc_divide_color {
+  border-color: $color-divide;
+
+  [data-theme='theme-default'] & {
+    border-color: $color-divide;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-color: $color-divide;
+  }
+}
+
+// 设置字体颜色
+@mixin c_text_color {
+  color: $color-text;
+
+  [data-theme='theme-default'] & {
+    color: $color-text;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $color-text;
+  }
+}
+
+@mixin bc_error_color {
+  border-color: $color-error;
+
+  [data-theme='theme-default'] & {
+    border-color: $color-error;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-color: $color-error;
+  }
+}
+
+@mixin bgc_bg_color {
+  background-color: $color-background;
+
+  [data-theme='theme-default'] & {
+    background-color: $color-background;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $color-background;
+  }
+}
+
+@mixin c_colorTextSecondary() {
+  color: $color-text-secondary;
+
+  [data-theme='theme-default'] & {
+    color: $color-text-secondary;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $dark-theme-text-secondary;
+  }
+}
+
+@mixin bc_control_color {
+  border-color: $color-control;
+
+  [data-theme='theme-default'] & {
+    border-color: $color-control;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-color: $color-control;
+  }
+}

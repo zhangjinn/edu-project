@@ -1,0 +1,27 @@
+@import 'var';
+
+.etm-loading {
+  .el-icon-loading {
+    animation-duration: 1.5s;
+  }
+
+  .el-loading-spinner {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+
+    .el-icon-loading {
+      color: $color-white !important;
+      font-size: 48px;
+    }
+  }
+
+}

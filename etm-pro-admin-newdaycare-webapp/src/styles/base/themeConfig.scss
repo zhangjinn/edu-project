@@ -1,0 +1,90 @@
+@import 'var';
+$default-backgroundColor: #fff;
+
+// 主题相关
+$color-themes: (
+  etm-rainBlue:(
+    color: $rainBlue,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-pink:(
+    color: $pink,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-purple:(
+    color: $purple,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-warmOrange:(
+    color: $warmOrange,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-blackGold: (
+    color: $blackGold,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-blue:(
+    color: $blue,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-green:(
+    color: $green,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-girlPink:(
+    color: $girlPink,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-lavenderPurple:(
+    color: $lavenderPurple,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-brown:(
+    color: $brown,
+    backgroundColor: $default-backgroundColor
+  )
+);
+
+/**
+ * 设置边框颜色
+ */
+@mixin etm-bdc {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      border-color: map_get($value, 'color');
+    }
+  }
+}
+
+/**
+ * 设置背景色
+ */
+@mixin etm-bgc {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      background-color: map_get($value, 'color');
+    }
+  }
+}
+
+/**
+ * 字体颜色
+ */
+@mixin etm-color {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      color: map_get($value, 'color');
+    }
+  }
+}
+
+/**
+ * 根据主题色设置背景透明度
+ */
+@mixin etm-bgc-rgba ($opacity: 0.12) {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      background-color: rgba(map_get($value, 'color'), $opacity);
+    }
+  }
+}
