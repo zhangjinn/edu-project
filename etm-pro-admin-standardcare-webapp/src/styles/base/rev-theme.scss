@@ -1,0 +1,629 @@
+/* 设置与颜色相关的指令以适配换肤功能
+ * 指令名规范： $css属性缩写-变量名
+ */
+
+@import './rev-var';
+@import './themeConfig';
+
+/**
+iconfont svg格式的默认样式
+ */
+.icon {
+  fill: currentColor;
+  height: 2em;
+  overflow: hidden;
+  vertical-align: -0.15em;
+  width: 2em;
+}
+
+.el-autocomplete-suggestion .highlighted {
+  @include etm-color;
+}
+
+
+@mixin hidden-scroll-bar() {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.block {
+  background-color: $bg-color;
+  height: 16px;
+}
+
+// 设置背景颜色
+@mixin bgc-sidebar-bg-color() {
+  background-color: $sidebarBg-color;
+
+  [data-theme='theme-default'] & {
+    background-color: $sidebarBg-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $sidebarBg-color;
+  }
+}
+
+@mixin bgc-sidebar-item-bg-color {
+  background-color: $sidebarItemBg-color;
+
+  [data-theme='theme-default'] & {
+    background-color: $sidebarItemBg-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $sidebarItemBg-color;
+  }
+}
+
+@mixin bgc-main-color {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      background-color: map_get($value, 'color');
+    }
+  }
+  //.etm-yellow & {
+  //  background-color: $yellow;
+  //}
+  //.etm-purple & {
+  //  background-color: $purple;
+  //}
+  //background-color: $main-color;
+  //[data-theme="theme-default"] & {
+  //    background-color: $main-color;
+  //}
+  //[data-theme="theme-dark"] & {
+  //    background-color: $main-color;
+  //}
+}
+
+@mixin bgc-main-10-color {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      background-color: rgba(map_get($value, 'color'), 0.1);
+    }
+  }
+  //.etm-yellow & {
+  //  background-color: $yellow-12;
+  //}
+  //.etm-purple & {
+  //  background-color: $purple-12;
+  //}
+  //background-color: $main-12-color;
+  //[data-theme="theme-default"] & {
+  //    background-color: $main-12-color;
+  //}
+  //[data-theme="theme-dark"] & {
+  //    background-color: $main-12-color;
+  //}
+}
+
+@mixin bgc-main-12-color {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      background-color: rgba(map_get($value, 'color'), 0.12);
+    }
+  }
+  //.etm-yellow & {
+  //  background-color: $yellow-12;
+  //}
+  //.etm-purple & {
+  //  background-color: $purple-12;
+  //}
+  //background-color: $main-12-color;
+  //[data-theme="theme-default"] & {
+  //    background-color: $main-12-color;
+  //}
+  //[data-theme="theme-dark"] & {
+  //    background-color: $main-12-color;
+  //}
+}
+
+@mixin bgc-white {
+  background-color: $white;
+
+  [data-theme='theme-default'] & {
+    background-color: $white;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $white;
+  }
+}
+
+@mixin bgc-white-15 {
+  background-color: $white-15;
+
+  [data-theme='theme-default'] & {
+    background-color: $white-15;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $white-15;
+  }
+}
+
+@mixin bgc-success-color {
+  background-color: $success-color;
+
+  [data-theme='theme-default'] & {
+    background-color: $success-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $success-color;
+  }
+}
+
+@mixin bgc-warn-color {
+  background-color: $warn-color;
+
+  [data-theme='theme-default'] & {
+    background-color: $warn-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $warn-color;
+  }
+}
+
+@mixin bgc-error-color {
+  background-color: $error-color;
+
+  [data-theme='theme-default'] & {
+    background-color: $error-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $error-color;
+  }
+}
+
+@mixin bgc-bg-color {
+  background-color: $bg-color;
+
+  [data-theme='theme-default'] & {
+    background-color: $bg-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $bg-color;
+  }
+}
+
+@mixin bgc-transparent {
+  background-color: transparent;
+
+  [data-theme='theme-default'] & {
+    background-color: transparent;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: transparent;
+  }
+}
+
+@mixin bgc-bg-color {
+  background-color: $bg-color;
+
+  [data-theme='theme-default'] & {
+    background-color: $bg-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $bg-color;
+  }
+}
+
+@mixin bgc-border-color-base {
+  background-color: $border-color-base;
+
+  [data-theme='theme-default'] & {
+    background-color: $border-color-base;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $border-color-base;
+  }
+}
+
+@mixin bgc-hover-color {
+  background-color: $hover-color;
+
+  [data-theme='theme-default'] & {
+    background-color: $hover-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $hover-color;
+  }
+}
+
+@mixin bgc-disabled-color {
+  background-color: $disabled-color;
+
+  [data-theme='theme-default'] & {
+    background-color: $disabled-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $disabled-color;
+  }
+}
+
+@mixin bgc-divide-color {
+  background-color: $divide-color;
+
+  [data-theme='theme-default'] & {
+    background-color: $divide-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    background-color: $divide-color;
+  }
+}
+
+// 设置字体颜色
+@mixin c-text-color {
+  color: $text-color;
+
+  [data-theme='theme-default'] & {
+    color: $text-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $text-color;
+  }
+}
+
+@mixin c-secondary-color {
+  color: $secondary-color;
+
+  [data-theme='theme-default'] & {
+    color: $secondary-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $secondary-color;
+  }
+}
+
+@mixin c-main-color {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      color: map_get($value, 'color');
+    }
+  }
+  //.etm-yellow & {
+  //  color: $yellow;
+  //}
+  //.etm-purple & {
+  //  color: $purple;
+  //}
+  //color: $main-color;
+  //[data-theme="theme-default"] & {
+  //    color: $main-color;
+  //}
+  //[data-theme="theme-dark"] & {
+  //    color: $main-color;
+  //}
+}
+
+@mixin c-title-color {
+  color: $title-color;
+
+  [data-theme='theme-default'] & {
+    color: $title-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $title-color;
+  }
+}
+
+@mixin c-success-color {
+  color: $success-color;
+
+  [data-theme='theme-default'] & {
+    color: $success-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $success-color;
+  }
+}
+
+@mixin c-warn-color {
+  color: $warn-color;
+
+  [data-theme='theme-default'] & {
+    color: $warn-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $warn-color;
+  }
+}
+
+@mixin c-error-color {
+  color: $error-color;
+
+  [data-theme='theme-default'] & {
+    color: $error-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $error-color;
+  }
+}
+
+@mixin c-white {
+  color: $white;
+
+  [data-theme='theme-default'] & {
+    color: $white;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $white;
+  }
+}
+
+@mixin c-border-color-base {
+  color: $border-color-base;
+
+  [data-theme='theme-default'] & {
+    color: $border-color-base;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $border-color-base;
+  }
+}
+
+@mixin c-control-color {
+  color: $control-color;
+
+  [data-theme='theme-default'] & {
+    color: $control-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $control-color;
+  }
+}
+
+@mixin c-disabled-color {
+  color: $disabled-color;
+
+  [data-theme='theme-default'] & {
+    color: $disabled-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    color: $disabled-color;
+  }
+}
+
+// 设置边框颜色
+@mixin bc-divide-color {
+  border-color: $divide-color;
+
+  [data-theme='theme-default'] & {
+    border-color: $divide-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-color: $divide-color;
+  }
+}
+
+@mixin bc-main-color {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      border-color: map_get($value, 'color');
+    }
+  }
+  //.etm-yellow & {
+  //  border-color: $yellow;;
+  //}
+  //.etm-purple & {
+  //  border-color: $purple;;
+  //}
+  //border-color: $main-color;
+  //[data-theme="theme-default"] & {
+  //    border-color: $main-color;
+  //}
+  //[data-theme="theme-dark"] & {
+  //    border-color: $main-color;
+  //}
+}
+
+@mixin bc-control-color {
+  border-color: $control-color;
+
+  [data-theme='theme-default'] & {
+    border-color: $control-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-color: $control-color;
+  }
+}
+
+@mixin bc-success-color {
+  border-color: $success-color;
+
+  [data-theme='theme-default'] & {
+    border-color: $success-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-color: $success-color;
+  }
+}
+
+@mixin bc-warn-color {
+  border-color: $warn-color;
+
+  [data-theme='theme-default'] & {
+    border-color: $warn-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-color: $warn-color;
+  }
+}
+
+@mixin bc-error-color {
+  border-color: $error-color;
+
+  [data-theme='theme-default'] & {
+    border-color: $error-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-color: $error-color;
+  }
+}
+
+@mixin bc-transparent {
+  border-color: transparent;
+
+  [data-theme='theme-default'] & {
+    border-color: transparent;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-color: transparent;
+  }
+}
+
+@mixin bc-bg-color {
+  border-color: $bg-color;
+
+  [data-theme='theme-default'] & {
+    border-color: $bg-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-color: $bg-color;
+  }
+}
+
+@mixin bc-border-color-base {
+  border-color: $border-color-base;
+
+  [data-theme='theme-default'] & {
+    border-color: $border-color-base;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-color: $border-color-base;
+  }
+}
+
+@mixin bc-white {
+  border-color: $white;
+
+  [data-theme='theme-default'] & {
+    border-color: $white;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-color: $white;
+  }
+}
+
+@mixin bc-disabled-color {
+  border-color: $disabled-color;
+
+  [data-theme='theme-default'] & {
+    border-color: $disabled-color;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-color: $disabled-color;
+  }
+}
+
+@mixin bc-main-5-color {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      border-color: mix(map_get($value, 'color'), $white);
+    }
+  }
+  //.etm-yellow & {
+  //    border-color: mix($yellow, $white);
+  //}
+  //.etm-purple & {
+  //    border-color: mix($purple, $white);
+  //}
+}
+
+
+// 表格虚线独占样式
+@mixin br-border-color-base {
+  border-right: 1px dashed $border-color-base;
+
+  [data-theme='theme-default'] & {
+    border-right: 1px dashed $border-color-base;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-right: 1px dashed $border-color-base;
+  }
+}
+
+@mixin bb-border-color-base() {
+  border-bottom: 1px dashed $border-color-base;
+
+  [data-theme='theme-default'] & {
+    border-bottom: 1px dashed $border-color-base;
+  }
+
+  [data-theme='theme-dark'] & {
+    border-bottom: 1px dashed $border-color-base;
+  }
+}
+
+// 加载动画圈圈的颜色
+@mixin s-loading() {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      stroke: map_get($value, 'color');
+    }
+  }
+  //.etm-yellow & {
+  //  stroke: $yellow;
+  //}
+  //.etm-purple & {
+  //  stroke: $purple;
+  //}
+  //stroke: $main-color;
+  //[data-theme="theme-default"] & {
+  //  stroke: $main-color;
+  //}
+  //[data-theme="theme-dark"] & {
+  //  stroke: $main-color;
+  //}
+}
+
+
+.el-image-viewer__wrapper {
+  .el-image-viewer__close {
+    .el-icon-circle-close {
+      color: $white;
+      font-size: 34px;
+    }
+  }
+
+  .el-image-viewer__btn {
+    .el-image-viewer__actions__inner {
+      > i {
+        font-size: 24px;
+      }
+    }
+  }
+}
