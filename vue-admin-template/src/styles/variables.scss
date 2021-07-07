@@ -1,0 +1,83 @@
+// sidebar
+$menuText:#bfcbd9;
+$menuActiveText:#409EFF;
+$subMenuActiveText:#f4f4f5; //https://github.com/ElemeFE/element/issues/12951
+
+$menuBg:#304156;
+$menuHover:#263445;
+
+$subMenuBg:#1f2d3d;
+$subMenuHover:#001528;
+
+$sideBarWidth: 210px;
+
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+}
+$default-backgroundColor: white;
+$dark-backgroundColor: #222;
+$white: #fff;
+$yellow: #FFAC4D;
+$purple: #8457f2;
+$pink: #F56B9B;
+$brown: #BA7A5C;
+$green: #57C69A;
+$blue: #2DBCFF;
+$warmOrange: #FF9670;
+$rainBlue: #0EC0C8;
+$girlPink: #FA8C8E;
+$lavenderPurple: #CA6CF5;
+
+$themes: (
+  etm-yellow: (
+    color: $yellow,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-blue:(
+    color: $blue,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-green:(
+    color: $green,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-brown:(
+    color: $brown,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-pink:(
+    color: $pink,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-purple:(
+    color: $purple,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-girlPink:(
+    color: $girlPink,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-lavenderPurple:(
+    color: $lavenderPurple,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-rainBlue:(
+    color: $rainBlue,
+    backgroundColor: $default-backgroundColor
+  ),
+  etm-warmOrange:(
+    color: $warmOrange,
+    backgroundColor: $default-backgroundColor
+  )
+);
+
+

@@ -1,0 +1,97 @@
+$color-white: #fff;
+$color-default-backgroundColor: #fff;
+
+// 颜色以color开头
+$color-yellow: #ffac4d;
+$color-purple: #8457f2;
+$color-pink: #f56b9b;
+$color-brown: #ba7a5c;
+$color-green: #57c69a;
+$color-blue: #3d7bff;
+$color-warmOrange: #ff9670;
+$color-rainBlue: #0ec0c8;
+$color-girlPink: #fa8c8e;
+$color-lavenderPurple: #ca6cf5;
+
+// 字体以font开头
+$font-example: 14px;
+
+// 背景以background开头
+$background-example: $color-white;
+
+// 主题相关
+$color-themes: (
+  etm-yellow: (
+    color:$color-yellow,
+    backgroundcolor: $color-default-backgroundColor
+  ),
+  etm-blue:(
+    color:$color-blue,
+    backgroundcolor: $color-default-backgroundColor
+  ),
+  etm-green:(
+    color:$color-green,
+    backgroundcolor: $color-default-backgroundColor
+  ),
+  etm-brown:(
+    color:$color-brown,
+    backgroundcolor: $color-default-backgroundColor
+  ),
+  etm-pink:(
+    color:$color-pink,
+    backgroundcolor: $color-default-backgroundColor
+  ),
+  etm-purple:(
+    color:$color-purple,
+    backgroundcolor: $color-default-backgroundColor
+  ),
+  etm-girlpink:(
+    color:$color-girlPink,
+    backgroundcolor: $color-default-backgroundColor
+  ),
+  etm-lavenderpurple:(
+    color:$color-lavenderPurple,
+    backgroundcolor: $color-default-backgroundColor
+  ),
+  etm-rainblue:(
+    color:$color-rainBlue,
+    backgroundcolor: $color-default-backgroundColor
+  ),
+  etm-warmorange:(
+    color:$color-warmOrange,
+    backgroundcolor: $color-default-backgroundColor
+  )
+);
+
+/**
+ * 设置边框颜色
+ */
+@mixin etm-bdc {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      border-color: map_get($value, 'color');
+    }
+  }
+}
+
+/**
+ * 设置背景色
+ */
+@mixin etm-bgc {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      background-color: map_get($value, 'color');
+    }
+  }
+}
+
+/**
+ * 字体颜色
+ */
+@mixin etm-color {
+  @each $key, $value in $color-themes {
+    .#{$key} & {
+      color: map_get($value, 'color');
+    }
+  }
+}

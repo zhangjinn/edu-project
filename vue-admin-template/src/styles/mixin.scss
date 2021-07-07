@@ -1,0 +1,62 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin scrollBar {
+  &::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+}
+
+@mixin relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/**
+ * 设置边框颜色
+ */
+@mixin etm-bdc {
+  @each $key, $value in $themes {
+    .#{$key} & {
+      border-color: map_get($value, 'color');
+    }
+  }
+}
+
+
+/**
+ * 设置背景色
+ */
+@mixin etm-bgc {
+  @each $key, $value in $themes {
+    .#{$key} & {
+      background-color: map_get($value, 'backgroundColor');
+    }
+  }
+}
+
+/**
+ * 字体颜色
+ */
+@mixin etm-color {
+  @each $key, $value in $themes {
+    .#{$key} & {
+      color: map_get($value, 'color');
+    }
+  }
+}
