@@ -1,0 +1,20 @@
+export default {
+  titlePublicAccountAuthorization: '公众号授权',
+  titleEvaluationPageLink: '观测页链接',
+  titlePublicAccountQrCodeUpload: '公众号二维码上传',
+  titleAppointmentConsultationPageSetting: '预约咨询页设置',
+  formLabelLink: '链接',
+  formLabelUploadQrCode: '上传二维码',
+  formUploadQrCodePlaceHolderText: '请上传二维码',
+  formLabelTitle: '标题',
+  formUTitlePlaceHolderText: '请输入标题',
+  formLabelSubtitle: '副标题',
+  formUSubtitlePlaceHolderText: '请输入副标题',
+  formLabelIntroductoryWords: '引导语',
+  formUIntroductoryWordsPlaceHolderText: '请输入引导语',
+  weChatAuthorization: '微信授权',
+  instructions: '操作说明',
+  messageCopySuccessful: '复制成功！',
+  messageCopyCopyFailed: '复制失败，请手动选择复制！',
+  messageSavedSuccessfully: '保存成功'
+}

@@ -1,0 +1,37 @@
+// 颜色相关变量
+$theme-color: #FF9091;
+$theme-color-hover: #FFA0A1;
+$theme-color-bg: #FFEDED;
+$theme-color-one: #F88A8B;
+$theme-color-two: #FB494D;
+
+$transparent: transparent;
+$theme-select-color: rgba(255, 255, 255, .15);
+$white-3: rgba(255, 255, 255, .3);
+$color-text-primary: #303133;
+$color-text-secondary: #909399;
+$color-text-regular: #555555;
+$white: #FFFFFF;
+$background-color-default: #F2F4F7;
+$background-color-default: $white;
+$border-color-base: #DCDFE6;
+$color-success: #67C23A;
+$color-warning: #F56C6C;
+$color-info: #CBCBCB;
+
+// 字体相关变量
+$title-font-size: 14px;
+$title-font-weight: 500;
+$regular-font-size: 13px;
+$regular-font-weight: 400;
+$note-font-size: 12px;
+$note-font-weight: 400;
+
+$sideBarWidth: 180px;
+
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+//:export {
+//  menuText: $white;
+//  menuActiveText: $white;
+//}

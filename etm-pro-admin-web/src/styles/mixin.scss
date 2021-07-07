@@ -1,0 +1,101 @@
+@import "~@/styles/theme.scss";
+/*
+  注意：如果要新添加指令，请在目录部分按照格式：指令名（参数：默认值） 说明
+
+  目录部分：
+  border-radius($radius)
+  box-shadow($x: 0, $y: 0, $blur: 1px, $color: #000)
+  linear-gradient($angle, $sc, $ec)
+  clearfix 清除浮动
+*/
+
+@mixin border-radius($radius){
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+// 函数参数有个内置变量 @arguments，相当于 js 中的 arguments
+@mixin box-shadow($x: 0, $y: 0, $blur: 1px, $color: #000){
+  -webkit-box-shadow: $x $y $blur $color;
+  -moz-box-shadow: $x $y $blur $color;
+  box-shadow: $x $y $blur $color;
+}
+
+//从左到右渐变
+@mixin linear-gradient($angle, $sc, $ec){
+  background: -webkit-linear-gradient($angle,$sc,$ec); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient($angle,$sc,$ec); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient($angle,$sc,$ec); /* Firefox 3.6 - 15 */
+  background: linear-gradient($angle,$sc,$ec); /* 标准的语法（必须放在最后） */
+}
+
+//宽高
+@mixin wh($width, $height){
+  width: $width;
+  height: $height;
+}
+
+//字体大小，颜色
+@mixin sc($size, $color){
+  font-size:$size;
+  color: $color;
+}
+
+//flex 布局和 子元素 对其方式
+@mixin fj($type: space-between){
+  display: flex;
+  justify-content: $type;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin scrollBar {
+  &::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+}
+
+@mixin relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+
+  border-radius($radius) 盒子圆角
+  flex($type: space-between) flex布局两端对齐
+
+ */
+@mixin border-radius($radius){
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+
+@mixin flex($type: space-between){
+  display: flex;
+  justify-content: $type;
+
+}

@@ -1,0 +1,80 @@
+@import "./variables";
+@import "./mixin";
+.notification{
+  padding: 0;
+  .el-popover__title{
+    padding: 12px;
+    width: 440px;
+    font-size: 14px;
+    font-weight: bold;
+    @include c_colorTextRegular();
+  }
+  .el-radio-button__orig-radio:checked+.el-radio-button__inner {
+    @include c_white();
+    @include bgc_themeColor();
+    @include bc_themeColor();
+    @include bs_themeColor(-1px 0 0 0);
+  }
+  .el-radio-button__inner:hover {
+    @include c_themeColor();
+  }
+  .readed{
+    position: absolute;
+    top: 10px;
+    right: 22px;
+    .el-radio-button__inner{
+      padding: 8px 20px;
+      font-size: 13px;
+    }
+  }
+  .notificationList{
+    height: 60vh;
+    overflow-y: scroll;
+  }
+  .el-row{
+    padding: 12px 24px;
+    &:hover{
+      background: $background-color-default;
+      .operate{
+        display: block;
+      }
+    }
+    .dot{
+      position: relative;
+      @include c_colorTextRegular();
+      &::before{
+        display: inline-block;
+        position: absolute;
+        top: 6px;
+        left: -10px;
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: $theme-color-two;
+      }
+      &.finished::before{
+        background: $color-info;
+      }
+    }
+    .time{
+      margin-top: 6px;
+      font-size: 13px;
+      @include c_colorTextSecondary();
+    }
+    .operate{
+      display: none;
+      float: right;
+      @include c_colorTextRegular();
+      &:hover{
+        @include c_themeColor();
+        cursor: pointer;
+      }
+    }
+  }
+  .noMore{
+    text-align: center;
+    @include c_colorTextSecondary();
+    font-size: 13px;
+  }
+}

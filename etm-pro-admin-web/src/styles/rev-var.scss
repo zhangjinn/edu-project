@@ -1,0 +1,66 @@
+/* 颜色相关变量
+ * 颜色变量名规范： $标识名-透明度(如果有的话，以%为单位)-颜色深浅程度-color
+ * 变量值为十六进制表示法时需以大写字母表示
+ */
+
+// 自然色
+$white: #FFF;
+$white-15: rgba(255, 255, 255, .15);
+
+// 主色
+$main-color: #8457f2;
+// 主题色
+$yellow: #FBA047;
+$yellow-12: rgba(251, 160, 71, .12);
+$purple: #8457f2;
+$purple-12: rgba(132, 87, 242, .12);
+
+$main-12-color: rgba(255, 164, 65, .12);
+$main-2-color: rgba(132, 87, 242, .2);
+$main-5-color: rgba(132, 87, 242, .5);
+// 辅助色
+$success-color: #67C23A;
+$success-light-color: #F0F9EB;
+
+$warn-color: #FAAD14;
+$warn-light-color: #FFFBE6;
+
+$error-color: #F5222D;
+$error-light-color: #FFF1F0;
+
+$tip-color: #0189ff;
+
+$info-color: #999;
+$info-light-color: #E6F7FF;
+
+// 中性色
+$title-color: #222;
+$text-color: #555;
+$secondary-color: #999;
+$disabled-color: #CCC;
+$control-color: #E0E0E0;
+$divide-color: #EEE;
+$bg-color: #f2f4f9;
+$hover-color: #FAFAFA;
+
+// 侧边栏sidebar
+//$sidebarBg-color: #20222A;
+//$sidebarItemBg-color: #0F1115;
+$sidebarBg-color: $white;
+$sidebarItemBg-color: $white;
+$submenuTitle-color: rgba(109,116,134,0.9);
+$submenuTitleHoverColor: rgba(109,116,134,1);
+$submenuTitleActiveColor: #6D7486;
+$menuItemBg-color: #F3F5FA;
+
+// 旧版UI需保留的颜色变量
+$border-color-base: #DCDFE6;
+
+/* 字体相关变量
+ * 字体变量名规范： $标识名-字体属性（驼峰）
+ */
+
+$important-fontSize: 20px;
+$title-fontSize: 16px;
+$text-fontSize: 14px;
+$comment-fontSize: 12px;

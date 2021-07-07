@@ -1,0 +1,544 @@
+<template>
+  <div class="table">
+    <etm-table-page
+      :columns="columns"
+      :data="tableData"
+      index
+      @currentChange="currentChange"
+    >
+      <etm-table-tool-bar slot="tool">
+        <el-input v-model="childName" placeholder="请输入幼儿姓名搜索" @keyup.enter.native="handleSearch">
+          <span slot="suffix" style="cursor: pointer" class="el-input__icon el-icon-search" @click="handleSearch" />
+        </el-input>
+        <div slot="right">
+          <el-button v-has="{authId: 'guardcare.child.create'}" type="primary" @click="add"><i
+            class="iconfont iconplus"
+          />添加幼儿
+          </el-button>
+          <el-button
+            v-has="{authId: 'guardcare.childClazzChange.updateBatch'}"
+            plain
+            @click.native="adjustBatch"
+          >批量调班
+          </el-button>
+          <el-button v-has="{authId: 'guardcare.childLeave.createBatch'}" plain @click.native="leaveBatch">
+            批量退园
+          </el-button>
+        </div>
+      </etm-table-tool-bar>
+
+      <el-table-column slot="left" label="幼儿姓名" fixed="left">
+        <template slot-scope="scoped">
+          <a @click="showDetail(scoped.row)">{{ scoped.row.childName }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column slot="left" label="性别">
+        <template slot-scope="scoped">
+          <span>{{ transferGender(scoped.row.gender) }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column slot="right" label="入托日期">
+        <template slot-scope="scoped">
+          <span>{{ transferDate(scoped.row.enrollmentTime) }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column slot="right" label="操作" fixed="right" width="240">
+        <template slot-scope="scoped">
+          <etm-text v-has="{authId: 'guardcare.childClazzChange.update'}" type="primary" @click="adjust(scoped.row)">
+            调班
+          </etm-text>
+          <etm-text v-has="{authId: 'guardcare.child.remove'}" type="danger" @click="remove(scoped.row)">删除</etm-text>
+        </template>
+      </el-table-column>
+    </etm-table-page>
+    <etm-pop
+      :visible="smallPop"
+      :title="smallTitle"
+      pop="simple"
+      confirm-btn="确定"
+      cancel-btn="取消"
+      append-to-body
+      @close="smallPopClose"
+      @confirm="smallPopConfirm"
+      @cancel="smallPopCancel"
+    >
+      <div class="pop">
+        <etm-form type="dialog">
+          <el-form-item label="已选幼儿">
+            {{ smallPopChild.childName }}
+          </el-form-item>
+          <template v-if="smallTitle === '调班'">
+            <el-form-item label="原班级">
+              {{ smallPopChild.clazzName }}
+            </el-form-item>
+            <el-form-item label="调班后班级">
+              <etm-clazz-cascader @change="getClazz" />
+            </el-form-item>
+          </template>
+          <template v-else-if="smallTitle === '退园'">
+            <el-form-item label="退园原因">
+              <el-select v-model="outReason" placeholder="请选择退园原因">
+                <el-option v-for="(reason, i) in reasonList" :key="i" :label="reason.label" :value="reason.value" />
+              </el-select>
+            </el-form-item>
+            <div class="leaveTips">1. 退园后，该幼儿将会被移除本幼儿园，家长不能查看班级及幼儿园的信息。</div>
+            <div class="leaveTips">2. 如果幼儿信息录错，请在【在园宝贝】信息后点击“编辑”。</div>
+          </template>
+        </etm-form>
+      </div>
+    </etm-pop>
+    <etm-pop
+      :visible="addPop"
+      :pop="popSize"
+      :title="addTitle"
+      confirm-btn="确定"
+      cancel-btn="取消"
+      append-to-body
+      @close="addPopClose"
+      @confirm="addPopConfirm"
+      @cancel="addPopCancel"
+    >
+      <batch-pop
+        v-if="addPop && (addTitle === '批量调班' || addTitle === '批量退园')"
+        :batch-data="batchData"
+        :type="batchType"
+        :clazz-id="itemId"
+      />
+      <child-form
+        v-if="addPop && addTitle === '添加幼儿'"
+        ref="addForm"
+        :form-data="formData"
+        form-type="add"
+        @repeat="getRepeat"
+      />
+    </etm-pop>
+
+    <etm-drawer
+      :visible.sync="showDrawer"
+      type="big"
+      append-to-body
+      @close="closeDrawer"
+    >
+      <detail
+        :child-id="childId"
+        :drawer-type="drawerType"
+        @finish="finishDrawer"
+        @change="changeType"
+        @close="closeDrawer"
+      />
+    </etm-drawer>
+  </div>
+</template>
+
+<script>
+import { parseTime } from '@/utils'
+import childForm from './component/childForm'
+import batchPop from './component/batchPop'
+import detail from './component/detail'
+import {
+  getEnterChildList,
+  childLeave,
+  clazzAdjust,
+  addChild,
+  deleteChild
+} from '@/api/guardcare/childManage/childManage'
+import {
+  getClazzItem
+} from '@/api/guardcare/edu/clazzManage'
+import EtmClazzCascader from '@/components/EtmClazzCascader'
+
+export default {
+  components: {
+    batchPop,
+    childForm,
+    detail,
+    EtmClazzCascader
+  },
+  props: {
+    searchInfo: {
+      type: Object,
+      default() {
+        return {}
+      }
+    },
+
+    itemId: {
+      type: Number,
+      default: null
+    }
+  },
+
+  data() {
+    return {
+      columns: [
+        {
+          label: '家长姓名',
+          prop: 'parentName'
+        },
+        {
+          label: '联系电话',
+          prop: 'telephone'
+        }
+      ],
+
+      pageNum: 1,
+      pageSize: 10,
+      tableData: {
+        content: []
+      },
+      smallPop: false,
+      smallTitle: '',
+      smallPopChild: {},
+      clazzValue: [],
+      reasonList: [
+        {
+          label: '毕业退园',
+          value: 'GRADUATION'
+        },
+        {
+          label: '转校退园',
+          value: 'TRANSFER'
+        },
+        {
+          label: '其他原因',
+          value: 'OTHER'
+        }
+      ],
+      outReason: '',
+      addPop: false,
+      addTitle: '',
+      popSize: 'big',
+      batchData: {
+        value: [],
+        clazz: null,
+        outReason: null
+      },
+      batchType: '',
+      formData: {},
+      showDrawer: false,
+      drawerType: '',
+      childId: '',
+      childName: '',
+      gradeId: '',
+      childRepeat: false
+    }
+  },
+  watch: {
+    searchInfo: {
+      handler() {
+        this.pageNum = 1
+        this.getList()
+      },
+      deep: true
+    }
+  },
+  mounted() {
+    this.getClazzItemData()
+    this.getList()
+  },
+  methods: {
+    getClazz(value) {
+      this.clazzValue = value
+    },
+    getClazzItemData() {
+      const id = this.itemId
+      getClazzItem(id).then((res) => {
+        const { data } = res
+        this.gradeId = data.gradeId
+      })
+    },
+    handleSearch() {
+      this.pageNum = 1
+      this.getList()
+    },
+    currentChange(pageNum, pageSize) {
+      this.pageNum = pageNum
+      this.pageSize = pageSize
+      this.getList()
+    },
+    getList() {
+      const param = {}
+      param.pageNum = this.pageNum
+      param.pageSize = this.pageSize
+      param.clazzId = this.itemId
+      param.childName = this.childName
+      getEnterChildList(param).then(res => {
+        this.tableData = res.data
+      })
+    },
+    transferGender(data) {
+      switch (data) {
+        case 'MALE':
+          return '男'
+        case 'FEMALE':
+          return '女'
+      }
+    },
+    add() { // 添加幼儿
+      this.addTitle = '添加幼儿'
+      this.popSize = 'complex'
+      // 初始化表单数据
+      this.formData = {
+        contactList: [
+          {
+            relationship: '',
+            name: '',
+            telephone: '',
+            attendanceCardNumber: ''
+          }
+        ],
+        clazz: {
+          gradeId: this.gradeId,
+          clazzId: this.itemId
+        },
+        nationality: '中国',
+        liveArea: {
+          province: '',
+          city: '',
+          county: ''
+        },
+        birthArea: {
+          province: '',
+          city: '',
+          county: ''
+        },
+        onceSick: [],
+        previewSrcKey: [],
+        previewSrcLists: []
+      }
+
+      this.addPop = true
+    },
+    adjustBatch() {
+      this.addTitle = '批量调班'
+      this.popSize = 'complex'
+      this.batchType = 'adjust'
+      this.addPop = true
+    },
+    leaveBatch() {
+      this.addTitle = '批量退园'
+      this.popSize = 'complex'
+      this.batchType = 'leave'
+      this.addPop = true
+    },
+    edit(row) { // 表格内点击编辑
+      this.showDrawer = true
+      this.childId = row.childId
+      this.drawerType = 'edit'
+    },
+    adjust(row) { // 表格内点击调班
+      this.smallTitle = '调班'
+      this.smallPopChild = row
+      this.smallPop = true
+    },
+    leave(row) { // 表格内点击退园
+      this.smallTitle = '退园'
+      this.smallPopChild = row
+      this.smallPop = true
+    },
+    remove(row) { // 删除幼儿
+      this.$etmTip.init({
+        type: 'error',
+        title: `确认删除该数据？`,
+        content: `删除后将无法撤销，是否继续操作？`,
+        confirmBtn: '删除',
+        cancelBtn: '取消',
+        cancel: () => {
+          this.$etmTip.close()
+        },
+        confirm: () => {
+          deleteChild(row.childId).then(() => {
+            this.$message.success('删除成功')
+            this.$etmTip.close()
+            this.getList()
+          }).catch(() => {
+            this.$etmTip.close()
+          })
+        }
+      })
+      this.$etmTip.open()
+    },
+    transferDate(date) {
+      if (!date) return
+      return parseTime(date, '{y}-{m}-{d}')
+    },
+    smallPopClose() { // 表格内退园、调班操作小弹窗关闭
+      this.smallPop = false
+    },
+    smallPopConfirm() { // 表格内退园、调班操作小弹窗确认
+      if (this.smallTitle === '退园') {
+        if (!this.outReason) {
+          this.$message.warning('请选择退园原因')
+          return
+        }
+        const param = {
+          childIdList: [],
+          outReason: this.outReason
+        }
+        param.childIdList.push(this.smallPopChild.childId)
+        childLeave(param).then(() => {
+          this.$message.success('退园成功')
+          this.smallPop = false
+          this.getList()
+        })
+      } else if (this.smallTitle === '调班') {
+        if (!this.clazzValue.length) {
+          this.$message.warning('请选择调整后班级')
+          return
+        }
+        const param = {
+          childIdList: [],
+          clazzId: this.clazzValue[1]
+        }
+        param.childIdList.push(this.smallPopChild.childId)
+        clazzAdjust(param).then(() => {
+          this.$message.success('调班成功')
+          this.clazzValue = []
+          this.smallPop = false
+          this.getList()
+          this.$emit('refresh')
+        })
+      }
+    },
+    smallPopCancel() { // 表格内退园、调班操作小弹窗关闭
+      this.smallPop = false
+    },
+    addPopClose() { // 添加幼儿大弹窗关闭
+      this.addPop = false
+    },
+    getRepeat(val) {
+      this.childRepeat = val
+    },
+    addPopConfirm() { // 添加幼儿大弹窗确认
+      if (this.addTitle === '添加幼儿') {
+        this.$refs.addForm.$children[1].$children[0].validate(valid => { // 表单验证
+          if (valid) {
+            if (this.childRepeat) {
+              this.$message.warning('幼儿已存在，不能重复添加')
+            } else {
+              const param = {
+                childName: this.formData.childName, // 孩子姓名
+                gender: this.formData.gender, // 孩子性别
+                birthday: parseTime(this.formData.birthday, '{y}-{m}-{d}'), // 孩子生日
+                enrollmentTime: parseTime(this.formData.enrollmentTime, '{y}-{m}-{d}'), // 孩子生日
+                clazzId: this.formData.clazz.clazzId, // 孩子班级id
+                contactList: this.formData.contactList, // 孩子联系人列表
+                nationality: this.formData.nationality, // 孩子国籍
+                certificateType: this.formData.certificateType, // 孩子证件类型
+                certificateNumber: this.formData.certificateNumber, // 孩子证件号码
+                currentAreaCode: this.formData.liveArea.county, // 孩子现住地区县code
+                currentAddress: this.formData.currentAddress, // 孩子详细地址
+                householdRegisterAreaCode: this.formData.birthArea.county, // 孩子户籍地区县code
+                isLeftBehindChildren: this.formData.isLeftBehindChildren, // 留守儿童
+                bloodType: this.formData.bloodType, // 孩子血型
+                healthCondition: this.formData.healthCondition, // 孩子健康状况
+                foodAllergyInfo: this.formData.foodAllergyInfo, // 孩子食物过敏情况
+                drugAllergyInfo: this.formData.drugAllergyInfo, // 孩子药物过敏情况
+                isCompleteVaccination: this.formData.isCompleteVaccination, // 疫苗接种
+                isEatByYourself: this.formData.isEatByYourself, // 自己吃饭
+                remarks: this.formData.remarks // 备注
+              }
+              if (this.formData.certificateNumber && this.formData.certificateNumber.length !== 15 && this.formData.certificateNumber.length !== 18) {
+                this.$message.warning('身份证号格式错误')
+                return
+              }
+              if (this.formData.previewSrcKey.length) { // 上传的图片
+                param.imageList = []
+                this.formData.previewSrcKey.forEach(item => {
+                  const arr = item.split('/')
+                  const data = {
+                    name: arr[arr.length - 1],
+                    url: item
+                  }
+                  param.imageList.push(data)
+                })
+              }
+              if (this.formData.onceSick && this.formData.onceSick.length) { // 曾患疾病
+                param.onceSick = this.formData.onceSick.join(',')
+              }
+              addChild(param).then(() => {
+                this.$message.success('添加幼儿成功')
+                this.getList()
+                this.addPop = false
+                this.$emit('refresh')
+              })
+            }
+          }
+        })
+      } else if (this.addTitle === '批量调班') {
+        if (!this.batchData.value.length) { // 未选择幼儿
+          this.$message.warning('请选择调班的幼儿')
+          return
+        } else if (!this.batchData.clazz) { // 未选择班级
+          this.$message.warning('请选择班级')
+          return
+        } else { // 提交调班数据
+          const param = {
+            childIdList: [],
+            clazzId: this.batchData.clazz[1]
+          }
+          this.batchData.value.forEach(item => {
+            param.childIdList.push(item.childId)
+          })
+          clazzAdjust(param).then(() => {
+            this.$message.success('调班成功')
+            this.batchData = {}
+            this.getList()
+            this.addPop = false
+            this.$emit('refresh')
+          })
+        }
+      } else {
+        if (!this.batchData.value.length) { // 未选择幼儿
+          this.$message.warning('请选择退园的幼儿')
+          return
+        } else if (!this.batchData.outReason) { // 未选择退园原因
+          this.$message.warning('请选择退园原因')
+          return
+        } else { // 提交退园数据
+          const param = {
+            childIdList: [],
+            outReason: this.batchData.outReason
+          }
+          this.batchData.value.forEach(item => {
+            param.childIdList.push(item.childId)
+          })
+          childLeave(param).then(() => {
+            this.$message.success('退园成功')
+            this.getList()
+            this.addPop = false
+            this.$emit('refresh')
+          })
+        }
+      }
+    },
+    addPopCancel() { // 大弹窗关闭
+      this.addPop = false
+    },
+    changeType(type) {
+      this.drawerType = type
+    },
+    showDetail(row) { // 幼儿详情
+      this.showDrawer = true
+      this.childId = row.childId
+      this.drawerType = 'detail'
+    },
+    closeDrawer() {
+      this.showDrawer = false
+    },
+    finishDrawer() {
+      this.getList()
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.iconplus {
+  font-size: 14px;
+}
+
+.leaveTips {
+  margin-bottom: 16px;
+}
+</style>

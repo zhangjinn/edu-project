@@ -1,0 +1,454 @@
+@import "~@/styles/variables.scss";
+
+$dark-theme-color: #C781D6;
+$dark-theme-color-bg: rgba(199, 129, 214, .3);
+$dark-theme-hover: #D28CDC;
+$dark-theme-deep: #212130;
+$dark-theme-bg-light: #2A2D3E;
+$dark-theme-bg-deep: #252535;
+$dark-theme-border: #4E5160;
+$dark-theme-text-primary: #DCDFE6;
+$dark-theme-text-secondary: #A9A9AD;
+$dark-theme-text-regular: #C0C4CD;
+$dark-theme-border-light: #373B50;
+
+@mixin c_themeColor() {
+  color: $theme-color;
+  [data-theme="theme-default"] & {
+    color: $theme-color;
+  }
+  [data-theme="theme-dark"] & {
+    color: $dark-theme-color;
+  }
+}
+
+@mixin bgc_themeColor() {
+  background-color: $theme-color;
+  [data-theme="theme-default"] & {
+    background-color: $theme-color;
+  }
+  [data-theme="theme-dark"] & {
+    background-color: $dark-theme-color;
+  }
+}
+
+@mixin bc_themeColor() {
+  border-color: $theme-color;
+  [data-theme="theme-default"] & {
+    border-color: $theme-color;
+  }
+  [data-theme="theme-dark"] & {
+    border-color: $dark-theme-color;
+  }
+}
+
+@mixin bs_themeColor($shadow) {
+  -webkit-box-shadow: $shadow  $theme-color;
+  box-shadow: $shadow  $theme-color;
+  [data-theme="theme-default"] & {
+    -webkit-box-shadow: $shadow  $theme-color;
+    box-shadow: $shadow  $theme-color;
+  }
+  [data-theme="theme-dark"] & {
+    -webkit-box-shadow: $shadow  $dark-theme-color;
+    box-shadow: $shadow  $dark-theme-color;
+  }
+}
+
+@mixin c_themeColorHover() {
+  color: $theme-color-hover;
+  [data-theme="theme-default"] & {
+    color: $theme-color-hover;
+  }
+  [data-theme="theme-dark"] & {
+    color: $dark-theme-hover;
+  }
+}
+
+@mixin bgc_themeColorHover() {
+  background-color: $theme-color-hover;
+  [data-theme="theme-default"] & {
+    background-color: $theme-color-hover;
+  }
+  [data-theme="theme-dark"] & {
+    background-color: $dark-theme-hover;
+  }
+}
+
+@mixin bgc_themeColorBg() {
+  background-color: $theme-color-bg;
+  [data-theme="theme-default"] & {
+    background-color: $theme-color-bg;
+  }
+  [data-theme="theme-dark"] & {
+    background-color: $dark-theme-color-bg
+  }
+}
+
+@mixin c_themeColorOne() {
+  color: $theme-color-one;
+  [data-theme="theme-default"] & {
+    color: $theme-color-one;
+  }
+  [data-theme="theme-dark"] & {
+    color: $dark-theme-color;
+  }
+}
+
+@mixin bgc_themeColorOne() {
+  background-color: $theme-color-one;
+  [data-theme="theme-default"] & {
+    background-color: $theme-color-one;
+  }
+  [data-theme="theme-dark"] & {
+    background-color: $theme-color-one;
+  }
+}
+
+@mixin c_themeColorTwo() {
+  color: $theme-color-two;
+  [data-theme="theme-default"] & {
+    color: $theme-color-two;
+  }
+  [data-theme="theme-dark"] & {
+    color: $theme-color-two;
+  }
+}
+
+@mixin c_transparent() {
+  color: $transparent;
+  [data-theme="theme-default"] & {
+    color: $transparent;
+  }
+  [data-theme="theme-dark"] & {
+    color: $transparent;
+  }
+}
+
+@mixin bgc_transparent() {
+  background-color: $transparent;
+  [data-theme="theme-default"] & {
+    background-color: $transparent;
+  }
+  [data-theme="theme-dark"] & {
+    background-color: $transparent;
+  }
+}
+
+@mixin bc_transparent() {
+  border-color: $transparent;
+  [data-theme="theme-default"] & {
+    border-color: $transparent;
+  }
+  [data-theme="theme-dark"] & {
+    border-color: $transparent;
+  }
+}
+
+@mixin bgc_themeSelectColor() {
+  background-color: $theme-select-color;
+  [data-theme="theme-default"] & {
+    background-color: $theme-select-color;
+  }
+  [data-theme="theme-dark"] & {
+    background-color: $theme-select-color;
+  }
+}
+
+@mixin c_colorTextPrimary() {
+  color: $color-text-primary;
+  [data-theme="theme-default"] & {
+    color: $color-text-primary;
+  }
+  [data-theme="theme-dark"] & {
+    color: $dark-theme-text-primary;
+  }
+}
+
+@mixin c_colorTextSecondary() {
+  color: $color-text-secondary;
+  [data-theme="theme-default"] & {
+    color: $color-text-secondary;
+  }
+  [data-theme="theme-dark"] & {
+    color: $dark-theme-text-secondary;
+  }
+}
+
+@mixin c_colorTextRegular() {
+  color: $color-text-regular;
+  [data-theme="theme-default"] & {
+    color: $color-text-regular;
+  }
+  [data-theme="theme-dark"] & {
+    color: $dark-theme-text-regular;
+  }
+}
+
+@mixin bc_colorTextRegular() {
+  border-color: $color-text-regular;
+  [data-theme="theme-default"] & {
+    border-color: $color-text-regular;
+  }
+  [data-theme="theme-dark"] & {
+    border-color: $color-text-regular;
+  }
+}
+
+@mixin c_white() {
+  color: $white;
+  [data-theme="theme-default"] & {
+    color: $white;
+  }
+  [data-theme="theme-dark"] & {
+    color: $white;
+  }
+}
+
+@mixin bgc_white() {
+  background-color: $white;
+  [data-theme="theme-default"] & {
+    background-color: $white;
+  }
+  [data-theme="theme-dark"] & {
+    background-color: $dark-theme-bg-light;
+  }
+}
+
+@mixin bc_white() {
+  border-color: $white;
+  [data-theme="theme-default"] & {
+    border-color: $white;
+  }
+  [data-theme="theme-dark"] & {
+    border-color: $white;
+  }
+}
+
+@mixin bgc_backgroundColorDefault() {
+  background-color: $background-color-default;
+  [data-theme="theme-default"] & {
+    background-color: $background-color-default;
+  }
+  [data-theme="theme-dark"] & {
+    background-color: $dark-theme-bg-deep;
+  }
+}
+
+@mixin bc_backgroundColorDefault() {
+  border-color: $background-color-default;
+  [data-theme="theme-default"] & {
+    border-color: $background-color-default;
+  }
+  [data-theme="theme-dark"] & {
+    border-color: $dark-theme-border-light;
+  }
+}
+
+@mixin c_borderColorBase() {
+  color: $border-color-base;
+  [data-theme="theme-default"] & {
+    color: $border-color-base;
+  }
+  [data-theme="theme-dark"] & {
+    color: $border-color-base;
+  }
+}
+
+@mixin bgc_borderColorBase() {
+  background-color: $border-color-base;
+  [data-theme="theme-default"] & {
+    background-color: $border-color-base;
+  }
+  [data-theme="theme-dark"] & {
+    background-color: $dark-theme-border;
+  }
+}
+
+@mixin bc_borderColorBase() {
+  border-color: $border-color-base;
+  [data-theme="theme-default"] & {
+    border-color: $border-color-base;
+  }
+  [data-theme="theme-dark"] & {
+    border-color: $dark-theme-border;
+  }
+}
+
+// 处理table表格特殊边的背景颜色
+@mixin bgc_borderColorBase_table() {
+  background-color: $border-color-base;
+  [data-theme="theme-default"] & {
+    background-color: $border-color-base;
+  }
+  [data-theme="theme-dark"] & {
+    background-color: $dark-theme-border;
+  }
+}
+
+// 小弹窗标题栏的背景
+@mixin bg_smallWindow() {
+  background: url("../../assets/images/dialogBg.png") no-repeat;
+  background-size: auto 82px;
+  background-position: 90% -18px;
+  [data-theme="theme-default"] & {
+    background: url("../../assets/images/dialogBg.png") no-repeat;
+    background-size: auto 82px;
+    background-position: 90% -18px;
+  }
+  [data-theme="theme-dark"] & {
+    background: $dark-theme-border-light url("../../assets/images/dialogBg-dark.png") no-repeat;
+    background-size: auto 82px;
+    background-position: 90% -18px;
+  }
+}
+
+// 大弹窗body的背景
+@mixin bg_fullWindow() {
+  background: $white url("../../assets/images/dialogBg.png") no-repeat 98% -6%;
+  [data-theme="theme-default"] & {
+    background: $white url("../../assets/images/dialogBg.png") no-repeat 98% -6%;
+  }
+  [data-theme="theme-dark"] & {
+    background: $dark-theme-bg-light url("../../assets/images/dialogBg-dark.png") no-repeat 98% -6%;
+  }
+}
+
+// 侧边弹窗头部的背景
+@mixin bg_sideWindow() {
+  background: $white url("../../assets/images/dialogBg.png") no-repeat;
+  background-size: auto 82px;
+  background-position: 92% -18px;
+  [data-theme="theme-default"] & {
+    background: $white url("../../assets/images/dialogBg.png") no-repeat;
+    background-size: auto 82px;
+    background-position: 92% -18px;
+  }
+  [data-theme="theme-dark"] & {
+    background: $dark-theme-bg-light url("../../assets/images/dialogBg-dark.png") no-repeat;
+    background-size: auto 82px;
+    background-position: 92% -18px;
+  }
+}
+
+// 侧边栏背景
+@mixin bgc_sideBar() {
+  background-color: $theme-color;
+  [data-theme="theme-default"] & {
+    background-color: $theme-color;
+  }
+  [data-theme="theme-dark"] & {
+    background: $dark-theme-deep;
+  }
+}
+
+// 登录页主体背景
+@mixin bg_login() {
+  background: url("../../assets/images/loginBg.png")  no-repeat center;
+  [data-theme="theme-default"] & {
+    background: $white url("../../assets/images/loginBg.png")  no-repeat center;
+  }
+  [data-theme="theme-dark"] & {
+    background: $dark-theme-bg-deep url("../../assets/images/loginBg-dark.png")  no-repeat center;;
+  }
+}
+
+// 登录页头、尾部背景
+@mixin bgc_login() {
+  background: $white;
+  [data-theme="theme-default"] & {
+    background: $white;
+  }
+  [data-theme="theme-dark"] & {
+    background: $dark-theme-border;
+  }
+}
+
+// 滚动条轨道背景
+@mixin bgc_scrollbarTrack() {
+  background-color: $background-color-default;
+  [data-theme="theme-default"] & {
+    background-color: $background-color-default;
+  }
+  [data-theme="theme-dark"] & {
+    background-color: #343748;
+  }
+}
+
+// 滚动条主体背景
+@mixin bgc_scrollbarThumb() {
+  background-color: #DDDEE0;
+  [data-theme="theme-default"] & {
+    background-color: rgba(221, 222, 224, 1);
+  }
+  [data-theme="theme-dark"] & {
+    background-color: #575A68;
+  }
+}
+
+@mixin bgc_scrollbarThumbHover() {
+  background-color: #C7C9CC;
+  [data-theme="theme-default"] & {
+    background-color: #C7C9CC;
+  }
+  [data-theme="theme-dark"] & {
+    background-color: #7A7C86;
+  }
+}
+
+// 表格虚线独占样式
+@mixin bb_borderColorBase() {
+  border-bottom: 1px dashed $border-color-base;
+  [data-theme="theme-default"] & {
+    border-bottom: 1px dashed $border-color-base;
+  }
+  [data-theme="theme-dark"] & {
+    border-bottom: 1px dashed $dark-theme-border;
+  }
+}
+
+@mixin br_borderColorBase() {
+  border-right: 1px dashed $border-color-base;
+  [data-theme="theme-default"] & {
+    border-right: 1px dashed $border-color-base;
+  }
+  [data-theme="theme-dark"] & {
+    border-right: 1px dashed $dark-theme-border;
+  }
+}
+
+// 侧边栏字体颜色独占样式
+@mixin c_sidebarText() {
+  color: rgba(255,255,255,0.8);
+  [data-theme="theme-default"] & {
+    color: rgba(255,255,255,0.8);
+  }
+  [data-theme="theme-dark"] & {
+    color: $dark-theme-text-primary;
+  }
+}
+
+// 白灰阴影
+@mixin bs_normal($shadow) {
+  -webkit-box-shadow: $shadow rgba(0,0,0,.1);
+  box-shadow: $shadow rgba(0,0,0,.1);
+  [data-theme="theme-default"] & {
+    -webkit-box-shadow: $shadow rgba(0,0,0,.1);
+    box-shadow: $shadow rgba(0,0,0,.1);
+  }
+  [data-theme="theme-dark"] & {
+    -webkit-box-shadow: $shadow rgba(255,255,255,.1);
+    box-shadow: $shadow rgba(255,255,255,.1);
+  }
+}
+
+// 加载动画圈圈的颜色
+@mixin s_loading() {
+  stroke: $theme-color;
+  [data-theme="theme-default"] & {
+    stroke: $theme-color;
+  }
+  [data-theme="theme-dark"] & {
+    stroke: $dark-theme-color;
+  }
+}

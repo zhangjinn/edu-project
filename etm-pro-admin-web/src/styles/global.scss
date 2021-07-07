@@ -1,0 +1,305 @@
+@import "./variables";
+@import "./mixin";
+//@import "./element";
+@import "./layout";
+@import "./transition";
+@import "./icon";
+
+.etm-loading, .el-loading-mask {
+  z-index: 10000!important;
+
+  .el-icon-loading {
+    animation-duration: 1.5s;
+  }
+
+  .el-loading-spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    .el-icon-loading {
+      font-size: 48px;
+      color: $white !important;
+    }
+    .circular {
+      .path {
+        stroke: $white !important;
+      }
+    }
+  }
+
+}
+
+.iconfont {
+  display: inline-block;
+  font-size: 16px;
+  vertical-align: inherit;
+  width: 26px;
+  text-align: center;
+}
+
+.etm-side, .etmSide {
+  .el-drawer__body {
+    overflow: auto;
+  }
+}
+
+.el-form-item {
+  margin-bottom: 24px;
+}
+
+// TODO 暂时这样修复侧边导航栏的hover样式
+
+body {
+  height: 100%;
+  line-height: 1.5;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  // font-family: Microsoft YaHei sans-serif;
+}
+
+// svg icon的通用样式
+.icon {
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+label {
+  font-weight: 500;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+  overflow: auto;
+  background-color: $bg-color;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,noto sans,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,noto color emoji;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+// main-container global css
+.app-container {
+  padding: 20px;
+}
+
+// 状态颜色
+.mainColor {
+  @include c_main_color();
+}
+
+.errorColor {
+  @include c_error_color();
+}
+
+.successColor {
+  @include c_success_color();
+}
+
+//二级页面默认高度
+.secondPageHeight {
+  height: calc(100vh - 151px);
+}
+
+body {
+  .stepTips {
+    margin-top: 0 !important;
+    @include c-text_color();
+    border: none !important;
+    box-shadow: 0px 4px 10px 0px rgba(34, 34, 34, 0.1);
+
+    p {
+      font-size: 12px;
+    }
+  }
+
+  .urgePayTip {
+    @include c_main_color();
+  }
+}
+
+// 侧边弹框内容超出滚动（目前应用于幼托）
+//.drawerBody{
+//  height: calc(100vh - 74px);
+//  overflow: auto;
+//}
+
+.el-drawer__body {
+  .EtmLayoutSplit-wrap {
+    height: 100vh;
+
+    .layout-default {
+      padding-bottom: 24px;
+      overflow-y: auto;
+    }
+
+    .layout-left {
+      padding-bottom: 24px;
+    }
+
+    .layout-right {
+      padding-bottom: 24px;
+    }
+  }
+}
+
+// 虚线按钮
+.addBtn {
+  border-style: dashed !important;
+
+  & > > > span {
+    display: flex;
+    align-items: center;
+  }
+
+  i.iconfont {
+    width: 12px;
+    height: 12px;
+    overflow: hidden;
+    font-size: 12px;
+    margin-right: 8px;
+  }
+}
+
+.el-dropdown-link {
+  cursor: pointer;
+}
+
+// Message 消息提示
+.el-message--warning {
+  background: #FFFBE6 !important;
+}
+
+.el-message--info {
+  background: #E6F7FF !important;
+  border: 1px solid #d0edff !important;
+
+  .el-icon-info, .el-message__content {
+    color: #1890FF !important;
+  }
+}
+
+button.el-button.el-button--dashed {
+  padding: 8px 15px;
+  background-color: #FAFAFA;
+  border: 1px dashed #E0E0E0;
+
+  &:hover {
+    @include bc_main_color();
+  }
+}
+
+.videoPop {
+  .el-dialog {
+    width: 908px;
+    background-color: #232828;
+  }
+}
+
+.el-dropdown-menu {
+  max-height: 310px;
+  overflow: auto;
+
+  &.el-dropdown-menu--small {
+    padding: 0;
+    background-color: #FBFCFE;
+    box-shadow: 0px 4px 8px 0px rgba(34, 34, 34, 0.1);
+    .el-dropdown-menu__item {
+      padding: 0 20px;
+      height: 40px;
+      line-height: 40px;
+
+      &:not(:first-child) {
+        margin-top: 4px;
+      }
+    }
+  }
+}
+
+// ai雷达探客下拉框样式
+.ai-popper{
+  background-color: #4B3C1D !important;
+  border: 1px solid #6C5A34 !important;
+
+  .el-select-dropdown__item{
+    font-size: 14px;
+    font-weight: 400;
+    color: #FFFFFF;
+
+    &.hover, &:hover{
+      background-color: rgba(#FFFFFF,0.2) !important;
+    }
+
+    &.selected{
+      background-color: rgba(#FFFFFF,0.2) !important;
+      color: #FFFFFF;
+    }
+
+  }
+  .popper__arrow{
+    border-top-color: #6C5A34 !important;
+    border-bottom-color: #6C5A34 !important;
+
+    &::after{
+      border-top-color: #6C5A34 !important;
+      border-bottom-color: #6C5A34 !important;
+    }
+  }
+
+}

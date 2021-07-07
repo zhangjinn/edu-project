@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1689282_1hbja0jltic.css">
+
+    <script async="async" defer="defer" type="text/javascript" src="//api.map.baidu.com/api?v=3.0&ak=OHVREiGHyubUoTEayGpF2WxARdZ3XHGG"></script>
+    <title></title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= webpackConfig.name %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+
+    <script async="async" defer="defer" src="//at.alicdn.com/t/font_1689282_1hbja0jltic.js"></script>
+    <script async="async" defer="defer" src="//res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+    <script>
+      window.onload = function() {
+        const hostConfig = window.localStorage.getItem('hostConfig')
+        let favicon, title
+        if (hostConfig) {
+          favicon = JSON.parse(JSON.parse(hostConfig).config).favicon || ''
+          title = JSON.parse(JSON.parse(hostConfig).config).title || ''
+        } else {
+          favicon = ''
+          title = ''
+        }
+        document.title = title
+        const link = document.createElement('link')
+        link.rel = 'icon'
+        link.href = favicon
+        document.getElementsByTagName('head')[0].appendChild(link)
+      }
+    </script>
+  </body>
+</html>
