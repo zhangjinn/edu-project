@@ -1,0 +1,309 @@
+@import "./mixin";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4, h5, h6, i, b, textarea, button, input, select, figure, figcaption {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-style: normal;
+  text-decoration: none;
+  border: none;
+  box-sizing: border-box;
+  //font-family: "Microsoft Yahei",sans-serif;
+  font-family: PingFang SC;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background-color: $bg-5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  background-color: $bg-5;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: $text-5;
+}
+
+input[type="button"], input[type="submit"], input[type="search"], input[type="reset"] {
+  -webkit-appearance: none;
+}
+
+textarea {
+  -webkit-appearance: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: $bg-5;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.clear:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clear {
+  zoom: 1;
+}
+
+.margin {
+  margin: 0 auto;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.textLeft {
+  text-align: left;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.textRight {
+  text-align: right;
+}
+
+.labelColor {
+  color: $text-9 !important;
+}
+
+.mainColor {
+  color: $theme !important;
+}
+
+.errorColor {
+  color: $red !important;
+}
+
+.greenColor {
+  color: $green !important;
+}
+
+.blueColor {
+  color: $blue !important;
+}
+
+*, :after, :before {
+  box-sizing: border-box;
+}
+
+.clearfix {
+  display: block;
+  zoom: 1;
+
+  &:after {
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+@keyframes backOpacity {
+  0% {
+    opacity: 1
+  }
+  25% {
+    opacity: .5
+  }
+  50% {
+    opacity: 1
+  }
+  75% {
+    opacity: .5
+  }
+  100% {
+    opacity: 1
+  }
+}
+
+.animation_opactiy {
+  animation: backOpacity 2s ease-in-out infinite;
+}
+
+//输入表单样式
+.van-cell__title {
+  color: $text-2 !important;
+  text-align: left !important;
+  font-size: 15px;
+}
+
+.van-cell::after {
+  position: absolute;
+  box-sizing: border-box;
+  content: ' ';
+  pointer-events: none;
+  right: 0;
+  bottom: 0;
+  left: 0 !important;
+  border-bottom: 1px solid $text-e;
+  transform: scaleY(0.5);
+}
+
+.van-cell {
+  &.focusBorder::after {
+    border-bottom: 1px solid $theme;
+  }
+}
+
+input, textarea {
+  caret-color: $theme;
+}
+
+.van-button:active::before {
+  opacity: 0 !important;
+}
+
+.van-dialog {
+  border-radius: 5px !important;
+}
+
+//标签样式
+.van-tag {
+  padding: 3px 12px !important;
+  font-size: 13px !important;
+  line-height: 20px !important;
+}
+
+//选择弹出层标题样式
+.van-picker__title {
+  font-size: 14px !important;
+  color: $text-5 !important;
+  font-weight: bold !important;
+}
+
+//选择弹出层取消按钮样式
+.van-picker__cancel, .van-action-sheet__cancel {
+  color: $text-9 !important;
+}
+
+//选择弹出层确定按钮样式
+.van-picker__confirm {
+  color: $theme !important;
+}
+
+//点击选择时的背景颜色调整
+.van-cell--clickable:active {
+  background-color: transparent !important;
+}
+
+.van-picker__cancel:active, .van-picker__confirm:active {
+  background-color: transparent !important;
+}
+
+.van-action-sheet__item:active, .van-action-sheet__cancel:active {
+  background-color: transparent !important;
+}
+
+.van-field__label {
+  font-size: 15px !important;
+  width: 130px !important;
+}
+
+.van-field__control {
+  color: $black !important;
+  font-size: 15px !important;
+}
+
+//底部固定按钮
+.bottomFixed {
+  @include wh(100%, 68px);
+
+  .bottomBtn {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 50px;
+    left: 0;
+    padding: 12px;
+    @include wh(100%, 68px);
+    background-color: $white;
+
+    &.notBottomBar {
+      bottom: 0;
+    }
+
+    .btn {
+      width: 100%;
+
+      & + .btn {
+        margin-left: 12px;
+      }
+    }
+  }
+}
+
+.van-dialog__header {
+  padding-top: 20px;
+  font-size: 16px;
+}
+
+.van-dialog__message {
+  font-size: 14px !important;
+  color: $text-6 !important;
+}
+
+//下拉选择样式
+.van-dropdown-menu__title {
+  font-size: 13px;
+  color: $text-5;
+}
+
+.van-dropdown-item__option--active {
+  .van-cell__title, .van-dropdown-item__icon {
+    color: $theme !important;
+  }
+}
+
+//上传图片框样式
+.van-uploader__upload {
+  border-radius: 2px;
+}
